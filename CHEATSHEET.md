@@ -116,12 +116,33 @@ fun PantallaConCamara() {
 - **Normales** (se otorgan solos): internet, bluetooth, NFC, vibración, alarmas.
 - **Runtime / con riesgo** (los pide el usuario): cámara, contactos, ubicación, micrófono, SMS, calendario, almacenamiento.
 
-## 9. Toast rápido
+## 9. DropdownMenu + Abrir URL + Imagen circular (típicos de ejercicios)
+```kotlin
+// DropdownMenu
+var expanded by remember { mutableStateOf(false) }
+Box {
+    TextField(value = seleccion, onValueChange = {}, readOnly = true,
+        modifier = Modifier.clickable { expanded = true })
+    DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+        opciones.forEach { op -> DropdownMenuItem(text = { Text(op) }, onClick = { seleccion = op; expanded = false }) }
+    }
+}
+
+// Abrir una URL
+val uriHandler = LocalUriHandler.current
+Button(onClick = { uriHandler.openUri("https://www.javeriana.edu.co") }) { Text("Página web") }
+
+// Imagen circular
+Image(painter = painterResource(R.drawable.logo), contentDescription = null,
+    modifier = Modifier.size(120.dp).clip(CircleShape))
+```
+
+## 10. Toast rápido
 ```kotlin
 Toast.makeText(LocalContext.current, "Hola!", Toast.LENGTH_SHORT).show()
 ```
 
-## 10. Recursos
+## 11. Recursos
 ```kotlin
 Text(text = stringResource(R.string.hello))
 Text(text = stringResource(R.string.congratulate, "New Year", 2025))

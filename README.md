@@ -11,7 +11,8 @@ organizado para tenerlo abierto durante el parcial teórico-práctico.
 | [`02-layouts-listas-navegacion`](./02-layouts-listas-navegacion) | Listas (LazyColumn/Grid), ListItem, REST API con Ktor, imágenes, Navegación (Navigation 3) | 4 |
 | [`03-viewmodel-arquitectura`](./03-viewmodel-arquitectura) | Arquitectura de apps, ViewModel, StateFlow, UDF, Dialogs | 5 |
 | [`04-permisos`](./04-permisos) | Permisos normales/runtime, Manifest, Google Accompanist | 6 |
-| [`codigo`](./codigo) | Archivos `.kt` completos y funcionales, listos para copiar/adaptar en el examen | — |
+| [`05-componentes-de-examen`](./05-componentes-de-examen) | DropdownMenu, LocalUriHandler, imagen circular, texto con estilo, validación de rango, pasar datos entre pantallas | Guía de ejercicios |
+| [`codigo`](./codigo) | Archivos `.kt` completos y funcionales, listos para copiar/adaptar en el examen (incluye un ejercicio tipo examen resuelto completo: `10_EjercicioResuelto_PantallaPrincipal.kt`) | — |
 | [`CHEATSHEET.md`](./CHEATSHEET.md) | Todo lo esencial en una sola página, para repasar en 5 minutos | — |
 
 ## 🧭 Cómo usar este repo en el examen
@@ -19,8 +20,9 @@ organizado para tenerlo abierto durante el parcial teórico-práctico.
 1. ¿El ejercicio pide **mostrar algo en pantalla** (listas, texto, imágenes)? → `01-compose-basico` o `02-layouts-listas-navegacion`.
 2. ¿Pide **manejar el estado/lógica de una pantalla** (guardar datos, reaccionar a clicks)? → `03-viewmodel-arquitectura`.
 3. ¿Pide **acceder a cámara, contactos, ubicación, micrófono, etc.**? → `04-permisos`.
-4. ¿Necesitas código ya armado para copiar y adaptar rápido? → `codigo/`.
-5. ¿Poco tiempo? → `CHEATSHEET.md` tiene todo resumido.
+4. ¿Pide DropdownMenu, abrir una URL, validar un número en un rango, pasar datos entre pantallas, texto con estilo o imagen circular? → `05-componentes-de-examen`.
+5. ¿Necesitas código ya armado para copiar y adaptar rápido? → `codigo/` (revisa `10_EjercicioResuelto_PantallaPrincipal.kt`, es un ejercicio completo tipo examen ya resuelto).
+6. ¿Poco tiempo? → `CHEATSHEET.md` tiene todo resumido.
 
 ## 🗓️ Contexto del curso
 
