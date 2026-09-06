@@ -12,6 +12,7 @@ organizado para tenerlo abierto durante el parcial teórico-práctico.
 | [`03-viewmodel-arquitectura`](./03-viewmodel-arquitectura) | Arquitectura de apps, ViewModel, StateFlow, UDF, Dialogs | 5 |
 | [`04-permisos`](./04-permisos) | Permisos normales/runtime, Manifest, Google Accompanist | 6 |
 | [`05-componentes-de-examen`](./05-componentes-de-examen) | DropdownMenu, LocalUriHandler, imagen circular, texto con estilo, validación de rango, pasar datos entre pantallas | Guía de ejercicios |
+| [`ejemplos`](./ejemplos) | **Solución completa de los 4 ejercicios de la guía práctica**, listos para copiar y adaptar | Guía de ejercicios |
 | [`codigo`](./codigo) | Archivos `.kt` completos y funcionales, listos para copiar/adaptar en el examen (incluye un ejercicio tipo examen resuelto completo: `10_EjercicioResuelto_PantallaPrincipal.kt`) | — |
 | [`CHEATSHEET.md`](./CHEATSHEET.md) | Todo lo esencial en una sola página, para repasar en 5 minutos | — |
 
