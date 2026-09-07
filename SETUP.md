@@ -40,11 +40,20 @@ alguien "llame" a esa función desde algún lado — y ese punto de partida siem
 `MainActivity.kt`, dentro de `setContent { }`. Así se ve por defecto un proyecto nuevo:
 
 ```kotlin
+package com.example.tuapp // <- NO borres esta línea, ya viene puesta por Android Studio
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TuAppTheme { // este nombre lo pone Android Studio solo, no lo cambies
+            // ⚠️ NO escribas "TuAppTheme" literal — reemplázalo por el nombre REAL de tu tema.
+            // Lo encuentras abriendo ui/theme/Theme.kt: busca una función @Composable que
+            // termine en "Theme", por ejemplo "Ejercicio1Theme" si tu proyecto se llama Ejercicio1.
+            Ejercicio1Theme {
                 // AQUÍ es donde llamas a la función principal del archivo que pegaste
                 Ejercicio1App()
             }
@@ -55,7 +64,7 @@ class MainActivity : ComponentActivity() {
 
 Reemplaza `Ejercicio1App()` por la función que corresponda según qué archivo pegaste — usa esta tabla:
 
-| Archivo que pegaste | Qué escribir dentro de `setContent { TuAppTheme { ... } }` |
+| Archivo que pegaste | Qué escribir dentro de `setContent { TuTema { ... } }` |
 |---|---|
 | `ejemplos/Ejercicio1.kt` | `Ejercicio1App()` |
 | `ejemplos/Ejercicio2.kt` | `Ejercicio2App()` |
@@ -137,13 +146,26 @@ Agrega SOLO los que vayas a usar, dentro de `<manifest>` y ANTES de `<applicatio
 <uses-permission android:name="android.permission.RECORD_AUDIO" />
 ```
 
-## 6. Sobre las imágenes (`R.drawable...`)
+## 6. Sobre las imágenes ("una imagen de tu preferencia")
 
-Donde el ejercicio dice "una imagen de tu preferencia", el código usa un ícono de Android que **ya
-viene incluido** (`android.R.drawable...`) para que compile sin que agregues nada. Si quieres tu
-propia imagen: arrastra el archivo `.png`/`.jpg` a `app/src/main/res/drawable/`, y donde diga
-`painterResource(id = android.R.drawable.algo)` cámbialo por `painterResource(id = R.drawable.tu_imagen)`
-(sin `android.` al inicio).
+Donde el ejercicio dice "una imagen de tu preferencia", el código usa un **ícono de Material**
+(`Icon(imageVector = Icons.Default.Star, ...)`) o un **color de fondo sólido**
+(`Modifier.background(Color(0xFF2C3E50))`) como placeholder, porque **no requieren ningún recurso
+adicional y siempre compilan y funcionan**.
+
+⚠️ Si quieres usar tu propia imagen (`.png`/`.jpg`) en vez del ícono/color: arrastra el archivo a
+`app/src/main/res/drawable/`, agrega el import `androidx.compose.foundation.Image` y
+`androidx.compose.ui.res.painterResource`, y reemplaza el `Icon(...)` por:
+```kotlin
+Image(
+    painter = painterResource(id = R.drawable.tu_imagen), // el nombre del archivo, sin extensión
+    contentDescription = null,
+    modifier = Modifier.size(120.dp)
+)
+```
+**No uses recursos de `android.R.drawable...`** (los íconos del sistema de Android) — varios de
+ellos no son compatibles con `painterResource()` en Compose y hacen que la app se cierre sola con
+el error `IllegalArgumentException: Only VectorDrawables and rasterized asset types are supported`.
 
 ## 7. Si algo sale subrayado en rojo (import faltante)
 

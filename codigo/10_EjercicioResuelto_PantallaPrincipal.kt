@@ -4,7 +4,46 @@
 // botones abajo en una Row, márgenes en todos los bordes,
 // navegación a "Pantalla 2" pasando los datos ingresados.
 // Adapta nombres y vistas a lo que pida tu enunciado real.
+// Dónde pegarlo: ver SETUP.md (raíz del repo) sección 3
+// Necesita el composable SelectorDeNivel() del archivo 08_DropdownMenuYUrl.kt
+// (pega ambos archivos en el mismo paquete)
 // ============================================================
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation3.runtime.NavEntry
+import androidx.navigation3.runtime.NavKey
+import androidx.navigation3.runtime.rememberNavBackStack
+import androidx.navigation3.ui.NavDisplay
+import kotlinx.serialization.Serializable
 
 @Serializable
 data object PrincipalRoute : NavKey
@@ -37,8 +76,9 @@ fun PantallaPrincipal(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Image(
-                painter = painterResource(R.drawable.android_logo),
+            // Reemplaza este ícono por tu propio logo si quieres (ver SETUP.md punto 6)
+            Icon(
+                imageVector = Icons.Default.Star,
                 contentDescription = null,
                 modifier = Modifier.size(120.dp)
             )
@@ -49,6 +89,7 @@ fun PantallaPrincipal(
                 label = { Text("Nombre") }
             )
             Spacer(modifier = Modifier.height(8.dp))
+            // SelectorDeNivel() está definido en 08_DropdownMenuYUrl.kt
             SelectorDeNivel(
                 nivelSeleccionado = nivel,
                 onNivelCambiado = { nivel = it }
@@ -73,13 +114,12 @@ fun PantallaPrincipal(
 // --- Pantalla 2: imagen de fondo + texto encima con los datos -----------
 @Composable
 fun Pantalla2(nombre: String, nivel: String) {
-    Box(modifier = Modifier.fillMaxSize()) {
-        Image(
-            painter = painterResource(R.drawable.fondo),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
-        )
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            // Reemplaza este color por tu propia imagen de fondo si quieres (ver SETUP.md punto 6)
+            .background(Color(0xFF2C3E50))
+    ) {
         Text(
             text = "$nombre - $nivel",
             color = Color.White,

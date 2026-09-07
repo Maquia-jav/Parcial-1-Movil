@@ -1,7 +1,44 @@
 // ============================================================
 // EJEMPLOS BASE — Composables, Modificadores, Layouts, Toast
 // Copia y adapta lo que necesites para el ejercicio del examen
+// Dónde pegarlo: ver SETUP.md (raíz del repo) sección 3
 // ============================================================
+
+import android.widget.Toast
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 
 // --- Composable simple con modificadores ---
 @Composable
@@ -38,12 +75,11 @@ fun PantallaEjemplo() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Box: superponer un ícono sobre una imagen (ej. avatar con check)
+        // Box: superponer un ícono sobre otro (ej. avatar con check)
+        // Reemplaza Icons.Default.Person por tu propia imagen con Image() y
+        // painterResource() si quieres usar un recurso de res/drawable (ver SETUP.md punto 6)
         Box {
-            Image(
-                painter = painterResource(R.drawable.avatar),
-                contentDescription = "Avatar"
-            )
+            Icon(Icons.Filled.Person, contentDescription = "Avatar")
             Icon(Icons.Filled.Check, contentDescription = "Verificado")
         }
     }
