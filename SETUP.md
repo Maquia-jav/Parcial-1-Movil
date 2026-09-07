@@ -33,6 +33,45 @@ Clic derecho sobre la carpeta de tu paquete (donde está `MainActivity.kt`) → 
 → ponle el mismo nombre del archivo del repo (ej. `Ejercicio1`) → pega **todo el contenido tal cual**,
 incluidos los imports de arriba. Debe quedar en el mismo paquete que `MainActivity.kt`.
 
+## 3.1 ⚠️ SIEMPRE debes tocar MainActivity.kt (sin importar la Opción A o B)
+
+Pegar el archivo (Opción B) **no lo muestra en pantalla por sí solo**. Compose necesita que
+alguien "llame" a esa función desde algún lado — y ese punto de partida siempre es
+`MainActivity.kt`, dentro de `setContent { }`. Así se ve por defecto un proyecto nuevo:
+
+```kotlin
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            TuAppTheme { // este nombre lo pone Android Studio solo, no lo cambies
+                // AQUÍ es donde llamas a la función principal del archivo que pegaste
+                Ejercicio1App()
+            }
+        }
+    }
+}
+```
+
+Reemplaza `Ejercicio1App()` por la función que corresponda según qué archivo pegaste — usa esta tabla:
+
+| Archivo que pegaste | Qué escribir dentro de `setContent { TuAppTheme { ... } }` |
+|---|---|
+| `ejemplos/Ejercicio1.kt` | `Ejercicio1App()` |
+| `ejemplos/Ejercicio2.kt` | `Ejercicio2App()` |
+| `ejemplos/Ejercicio3.kt` | `Ejercicio3App()` |
+| `ejemplos/Ejercicio4.kt` | `Ejercicio4App()` |
+| `codigo/03_Navegacion.kt` | `AppNavigation()` |
+| `codigo/04_RestApiKtor.kt` | `PantallaDeUsuarios()` |
+| `codigo/05_ViewModel.kt` | `PantallaContador()` |
+| `codigo/07_Permisos.kt` | `PantallaConCamara()` (o `PantallaConUbicacion()`) |
+| `codigo/10_EjercicioResuelto_PantallaPrincipal.kt` (+ debes pegar también `codigo/08_DropdownMenuYUrl.kt` en el mismo paquete, porque el 10 usa una función del 08) | `AppNavigationEjercicio1()` |
+| `codigo/01_ComposeBasico.kt` | No es una app completa — son piezas sueltas. Llama la que necesites, ej. `PantallaEjemplo()` |
+| `codigo/02_ListasYGrids.kt`, `06_Dialogs.kt`, `08_DropdownMenuYUrl.kt`, `09_ValidacionRangoYCalculo.kt` | No son pantallas completas por sí solas — son **piezas para usar DENTRO de otro composable tuyo** (reciben parámetros). No las llames solas desde `setContent`. |
+
+Si Android Studio te subraya en rojo el nombre de la función dentro de `setContent`, es porque no
+está en el mismo paquete que `MainActivity.kt` — revisa el punto 2 de esta guía.
+
 ## 4. Dependencias necesarias — `build.gradle.kts (Module :app)`
 
 Abre ese archivo y agrega esto dentro del bloque `dependencies { }` que ya existe (no borres lo que
