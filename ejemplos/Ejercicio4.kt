@@ -6,7 +6,52 @@
 // - Si SÍ está -> lista (ListItem + HorizontalDivider) con la
 //   sucesión triangular: 0,1,3,6,10,15...
 // - Al tocar un ítem -> pantalla con el valor en negrilla, rojo, 30sp
+// Dónde pegarlo: crea un archivo Ejercicio4.kt en tu paquete (ver SETUP.md
+// sección 3) y pega TODO este contenido tal cual, incluidos los imports.
+// Dependencias necesarias: ver SETUP.md sección 4 (Navigation 3)
 // ============================================================
+
+import android.util.Log
+import android.widget.Toast
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.ListItem
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation3.runtime.NavEntry
+import androidx.navigation3.runtime.NavKey
+import androidx.navigation3.runtime.rememberNavBackStack
+import androidx.navigation3.ui.NavDisplay
+import kotlinx.serialization.Serializable
 
 @Serializable
 data object Ej4PrincipalRoute : NavKey
@@ -32,8 +77,9 @@ fun Ejercicio4PantallaPrincipal(onNumeroValido: (Int) -> Unit) {
         Text("Sucesión Triangular", fontSize = 20.sp, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(16.dp))
 
+        // Reemplaza este ícono por tu propia imagen si quieres (ver SETUP.md punto 6)
         Image(
-            painter = painterResource(id = android.R.drawable.sym_def_app_icon), // reemplaza por tu imagen
+            painter = painterResource(id = android.R.drawable.sym_def_app_icon),
             contentDescription = null,
             modifier = Modifier
                 .size(120.dp)

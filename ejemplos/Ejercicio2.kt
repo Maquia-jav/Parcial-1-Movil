@@ -4,7 +4,39 @@
 // - La UI se ve bien en Portrait y Landscape (usa fillMaxWidth,
 //   NO usa tamaños fijos en dp) -> no necesita ViewModel
 // - Al pulsar "Factorial", navega mostrando la operación y el resultado
+// Dónde pegarlo: crea un archivo Ejercicio2.kt en tu paquete (ver SETUP.md
+// sección 3) y pega TODO este contenido tal cual, incluidos los imports.
+// Dependencias necesarias: ver SETUP.md sección 4 (Navigation 3)
 // ============================================================
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.dp
+import androidx.navigation3.runtime.NavEntry
+import androidx.navigation3.runtime.NavKey
+import androidx.navigation3.runtime.rememberNavBackStack
+import androidx.navigation3.ui.NavDisplay
+import kotlinx.serialization.Serializable
 
 @Serializable
 data object Ej2PrincipalRoute : NavKey
@@ -69,8 +101,9 @@ fun Ejercicio2PantallaResultado(numero: Int) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        // Reemplaza este ícono por tu propia imagen si quieres (ver SETUP.md punto 6)
         Image(
-            painter = painterResource(id = android.R.drawable.sym_def_app_icon), // reemplaza por tu imagen
+            painter = painterResource(id = android.R.drawable.sym_def_app_icon),
             contentDescription = null,
             modifier = Modifier.size(100.dp)
         )

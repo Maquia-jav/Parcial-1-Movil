@@ -3,6 +3,11 @@
 Repositorio de estudio con **toda la teoría y el código** visto hasta la Sesión 6 (Permisos),
 organizado para tenerlo abierto durante el parcial teórico-práctico.
 
+## ⚠️ Antes que nada
+
+Lee **[`SETUP.md`](./SETUP.md)** — explica cómo crear el proyecto en Android Studio, dónde pegar el
+código de este repo, y todas las dependencias de Gradle que necesitas para que todo compile.
+
 ## 📚 Contenido
 
 | Carpeta | Tema | Sesión |
