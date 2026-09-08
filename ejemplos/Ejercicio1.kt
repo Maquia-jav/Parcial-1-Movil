@@ -30,7 +30,9 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -106,7 +108,13 @@ fun Ejercicio1PantallaPrincipal(
                     value = nivel,
                     onValueChange = { },
                     readOnly = true,
+                    enabled = false, // evita que el propio campo se quede con el toque
                     trailingIcon = { Icon(Icons.Default.ArrowDropDown, contentDescription = null) },
+                    colors = OutlinedTextFieldDefaults.colors(
+                        disabledTextColor = MaterialTheme.colorScheme.onSurface,
+                        disabledBorderColor = MaterialTheme.colorScheme.outline,
+                        disabledTrailingIconColor = MaterialTheme.colorScheme.onSurfaceVariant
+                    ),
                     modifier = Modifier
                         .fillMaxWidth()
                         .clickable { nivelExpanded = true }

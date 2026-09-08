@@ -121,7 +121,9 @@ fun PantallaConCamara() {
 // DropdownMenu
 var expanded by remember { mutableStateOf(false) }
 Box {
-    TextField(value = seleccion, onValueChange = {}, readOnly = true,
+    // ⚠️ enabled = false es obligatorio, si no el menú nunca se abre (ver 05-componentes-de-examen)
+    TextField(value = seleccion, onValueChange = {}, readOnly = true, enabled = false,
+        colors = TextFieldDefaults.colors(disabledTextColor = MaterialTheme.colorScheme.onSurface),
         modifier = Modifier.clickable { expanded = true })
     DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
         opciones.forEach { op -> DropdownMenuItem(text = { Text(op) }, onClick = { seleccion = op; expanded = false }) }

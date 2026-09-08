@@ -14,11 +14,20 @@ var opcionSeleccionada by remember { mutableStateOf("Primaria") }
 val opciones = listOf("Primaria", "Secundaria", "Pregrado", "Posgrado")
 
 Box {
+    // ⚠️ enabled = false es OBLIGATORIO. Sin esto, el propio TextField se queda
+    // con el toque (para cursor/foco) y el clickable de abajo casi nunca se dispara,
+    // así que el menú nunca se abre. Los "colors" evitan que se vea "apagado".
     TextField(
         value = opcionSeleccionada,
         onValueChange = { },
         readOnly = true,
+        enabled = false,
         trailingIcon = { Icon(Icons.Default.ArrowDropDown, contentDescription = null) },
+        colors = TextFieldDefaults.colors(
+            disabledTextColor = MaterialTheme.colorScheme.onSurface,
+            disabledIndicatorColor = MaterialTheme.colorScheme.outline,
+            disabledTrailingIconColor = MaterialTheme.colorScheme.onSurfaceVariant
+        ),
         modifier = Modifier.clickable { expanded = true }
     )
     DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
